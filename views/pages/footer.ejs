@@ -1,0 +1,235 @@
+
+ <script>
+
+
+
+
+/**
+ * Fonction qui affiche les commentaires
+*/
+
+function commentaire(info){
+
+  let id = info[0]
+  let ext = info[1]
+  
+   let body = $("#commentaires") 
+
+  $.ajax({
+       url:'/commentaires',
+       method : 'POST',
+       contentType: 'application/json',
+       data  : JSON.stringify({ id : id , ext : ext }),
+       
+       success:function(posts) { 
+
+ if(posts ){
+        body.html('')
+        body.append('<ul  class="nav">')
+        
+          for(let i=0 ; i != posts[i].length ;i++ ) { 
+                body.append('\
+                  <li  onClick="compte('+posts[i].id_profil+')" >\
+                  <div class="column">\
+                  <div class="row waves-effect waves-light" style=" padding-left: 10px ;display: flex ; justify-content: left; align-items: center; flex-direction: row; background-color: #EEE;">\
+                    <img class="circle" style=" width: 40px;height: 40px;" src="images/'+posts[i].id_image+'">\
+                    <p style="padding-left:20px "> '+posts[i].username+' </p> \
+                    </div><div><p>'+posts[i].content+'</p></div></div></li>\
+                    ')
+
+                }
+                                  
+            pody.append('</ul>')
+
+       }
+      }
+
+  })
+}
+
+/*
+  fonction qui traite les les likes
+*/
+
+function visiteur(id){
+ 
+  console.log(id) 
+
+  console.log("appel à la fonction !")
+  let couleur =  $('#'+id).css('background-color')
+  let val = $("#"+id).attr('value')
+  console.log($('#'+id))
+$.ajax({
+  url:'/like',
+     method : 'POST',
+    contentType: 'application/json',
+    data  : JSON.stringify({ id : id, val : val }),
+   
+    success:function(response) {
+      console.log(" on est dans le success")
+      if (couleur != 'rgb(0, 128, 0)' ){
+        
+        console.log("on est dans le unlike")
+        $('#'+id).css("background-color","green")
+        t = $('#'+id).text().trim().split(" ")[0] 
+        $('#'+id).text((parseInt(t)-1)+ " Like")
+        $('#'+id).attr('value','like') 
+          
+      }else{
+        console.log("on est dans  le like ")
+        $('#'+id).css("background-color","red")
+        t = $('#'+id).text().trim().split(" ")[0] 
+        $('#'+id).text((parseInt(t)+1)+ " Unlike")
+        $('#'+id).attr('value','unlike')  
+
+      }
+
+     }
+   });
+}
+    
+
+// les postes 
+
+
+
+function compte(id){
+  
+                         $.ajax({
+                         url:'/visite_profil',
+                         method : 'POST',
+                         contentType: 'application/json',
+                         data  : JSON.stringify({ id : id }),
+                         
+                         success:function(posts) {   
+
+                               let body = $('#postes')
+
+                                body.html("")
+                                body.append(posts)
+                        
+                                
+               
+                 if(posts){
+
+                        let ident = 0  
+                        let ext =""
+                        info =[]
+                        for(let i = 0 ; i < posts.length ; i++){
+                          if( posts[i].type == 'p' ){
+                            ident = posts[i].id_image
+                          }else{
+                            t= posts[i].id_image.split('.')
+                            ident = t[0].substring(6) 
+                            ext= t[1]
+                            info =[ident,ext]
+                          }
+                         
+                          // insertion d'un poste en ajax
+                          
+                          /*************************************/
+                          body.append('<div class="row" style="width:100%; height: 100%; "> \
+                            <div class="col s12 m7" style="width:100%; height: 100%; " >\
+                              ') 
+                                        
+                      if( posts[i].type == 'i' ){
+                        console.log(ident)
+
+                        body.append('\
+                        <div class="card">\
+                          <div class="card-image">\
+                        <img class="materialboxed" src="images/'+posts[i].id_image+'">\
+                        </div> \
+                         ')
+                        }
+
+                        body.append('\
+                        <div  class="card-content">\
+                        <p>'+posts[i].description +'</p>\
+                        </div> ')
+
+                        if( posts[i].type == 'i' ){
+                                body.append('</div>')
+                            }
+                        body.append('<button id="'+ident+'"  value="like" class="btn waves-effect waves-light " style="background-color: green"  onClick="visiteur('+ident+')" style=" padding-right: 10px; ">\
+                        '+posts[i].likes+' Likes </button>\
+                        <button id="'+ident+'" onClick="commentaire('+info+')" data-target="modal2" class="btn waves-effect waves-light  blue">Commentaires</button> \
+                        <div id="commentaires">\
+                          <\div>\
+                           ')            
+                    /****************************************/            
+                                }        
+ 
+                         
+                        }else{
+                          body.append("<h3>Ce profil n'a rien posté</h3>")
+                        }          
+
+                        }
+
+                        }) 
+                        }
+
+
+
+                          /*
+                            function recherche dans une liste d'amis
+                          */
+
+                  function search_freind() {
+                         
+                    console.log("je suis dans le search")
+                   let val = $("#search").val() 
+                   let elm =  $("#liste_amis") 
+                   elm.html("")
+                   
+                   $.ajax({
+                         url:'/users',
+                         method : 'POST',
+                         contentType: 'application/json',
+                         data  : JSON.stringify({ val:val }),
+                         
+                         success:function(freinds) {   
+                           
+                          for( let i = 0 ;i!= freinds.length ; i++  ){
+                               elm.append('\
+                                  <li  onClick="compte('+freinds[i].id_profil+')">\
+                                  <div class="row waves-effect waves-light"\
+                                  style=" padding-left: 10px ;display: flex ; justify-content: left; align-items: center; flex-direction: row; background-color: #EEE;">\
+                                  <img class="circle" style=" width: 40px;height: 40px;" src="images/'+freinds[i].id_image+'"></a>\
+                                  <p style="padding-left:20px "> '+freinds[i].username+' </p>\
+                                  </div>  </li> ')
+                          
+                          }
+
+                         } 
+                        })
+
+
+
+                 
+                     
+                        
+                        
+
+                      
+                      }
+
+    </script>
+
+ 
+  <footer class="footer">
+
+  </footer>
+
+  <!-- Fermeture de la balise div de page qui se  trouve dans le header -->
+</div>
+
+      <script src="./traitement/control.js"></script>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+      </script>
+    </body>
+  </html>

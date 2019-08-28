@@ -1,0 +1,119 @@
+<% include header %>
+<% include menu_gauche %>
+
+
+<div class="body">
+
+    <div class="post" style="width: 60%; height: 100%;">
+        
+        
+        
+            <div class="row">
+                    <form class="col s12" method="POST" action="ajout_post">
+                     
+                        <div class="row">
+                        <div class="input-field col s10">
+                          <i class="material-icons prefix">mode_edit</i>
+                          <textarea name="description" id="icon_prefix2" class="materialize-textarea"  required></textarea>
+                          <label for="icon_prefix2">Exprimez-vous... </label>
+                        </div>
+                        </div>
+
+                  <div style="width: 80% ;  overflow: scroll" id="selected_img">
+                 <% if( locals.selected_image ) { %>
+                  <img src="<%=locals.selected_image%>" style="width:300px; height: 300px" >
+                  <script>
+                      document.getElementById("selected_img").style.height = "300px";
+                  </script>
+                  <%}%>
+                  </div>
+                             <div  id="post_div"  style="padding-left: 45px; padding-right: 5px;" class="file-field input-field">
+                                 <div class=" waves-effect waves-light btn-small">
+                                     <a href="load"><i class="material-icons">local_see</i></a>
+                                 </div>
+                             <button  class="btn waves-effect waves-light" type="submit" name="action">Ajouter
+                                    <i class="material-icons right">send</i>
+                                  </button>
+                             </div>
+                    
+                    </form>
+                  </div>
+  
+                                          
+            </div>
+
+                <br>
+                <br>
+                <br>
+
+
+
+    <div id="postes" style="background-color: #EEE; height:100%; width:60%; ">
+          
+            Affaichage des postes d'un profil      
+            <%if(locals.posts) {%>   
+              <!--
+
+                
+                <%for(let i=0 ; i != locals.posts.length ; i++ ) {%> 
+                  
+                  <%include poste %> 
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  
+                  
+                  <%}%>    
+                  
+                -->
+               
+              
+                
+                <!--
+                  Affaichage des profils lors d'une recherche avancée
+                   you have deleted the else if !!!
+                -->
+            <%}else if(locals.profils ) {%>
+                
+                <ul class="nav">
+                
+              <%for(let i=0 ; i != locals.profils.length ; i++ ) {%> 
+                                   
+                        <li onClick="compte('<%=locals.profil.id_profil%>')" >
+                              <div class="row waves-effect waves-light" style=" padding-left: 10px ;display: flex ; justify-content: left; align-items: center; flex-direction: row; background-color: #EEE;">
+                               <img class="circle" style=" width: 100px;height: 100px;" src="images/<%=locals.profils[i].id_image%>"></a>
+                               <p style="padding-left:20px "> <%=locals.profils[i].username%> </p> 
+                               </div>
+                         </li>
+           
+                   <%}%>
+                </ul>
+               
+            <%}%>
+                  
+
+
+        <!--
+          Le scripte pour gérer les likes 
+        -->    
+                             
+     
+      
+           
+    </div>
+    
+            
+</div>
+
+<% include menu_droite %>
+
+
+ <% include footer%>
+        
+
+
+  
+  
+   
+  

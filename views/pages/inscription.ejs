@@ -1,0 +1,137 @@
+<% include header %>
+
+    
+     <div class="container" >         
+         <form   action='/inscription' method="POST"  enctype="multipart/form-data" >
+            <H4>Veuillez completer le formulaire : </H4>
+            <br>
+            
+                <div class="row">
+                    
+                    <div class="input-field col s5">
+                        <input type="text" name="nom" id="nom">
+                        <label for="nom" class="active">Nom</label>                                
+                    </div>
+                    
+                    <div class="input-field col s5">
+                        <input type="text" name="prenom" id="prenom">
+                        <label for="prenom" class="active">Prenom</label>                                
+                    </div>
+            </div>
+                
+            <div class="row">
+            <div class="input-field col s10">
+                <input type="text" name="username" id="username" required>
+                    <label for="username" class="active">Nom d'utilisateur</label>                                
+            </div>
+            
+            <div class="input-field col s10">
+                    <input type="password" name="pwd" id="pwd" class="validate" required> 
+                    <label for="pwd" class="active">Mot de passe </label>                                
+                </div>
+
+                <div class="input-field col s10">
+                    <input type="password" name="vpwd" id="vpwd" class="validate" required>
+                    <label for="vpwd" class="active">Vérification du mot de passe </label>   
+            </div>
+
+            <div class="row"> 
+
+                    <div class="input-field col s5">
+                        <input type="text" name="pays" id="pays">
+                        <label for="nom" class="active">Pays</label>                                
+                    </div>
+                    
+                    <div class="input-field col s5">
+                        <input type="text" name="ville" id="ville">
+                        <label for="ville" class="active">Ville</label>                                
+                    </div>
+                    
+                    <div class="row">
+
+                                <div class="input-field col s3">
+                                    <input type="text" name="age" id="age">
+                                    <label for="age" class="active">Age</label>                                
+                                </div>
+                                
+                                <div class="input-field col s4">
+                                        <select name="sexe">
+                                        <option value="Masculin" name="sexe">Masculin</option>
+                                        <option value="Féminin" name="sexe">Féminin</option>
+                                        <option value="Autre" name="sexe">Autre</option>
+                                    </select>
+                                    <label>Sexe</label>
+                                    </div>      
+                                    <div class="input-field col s3">
+                                            <input type="text" name="taille" id="taille">
+                                            <label for="taille" class="active">Taille</label>
+                                        </div>         
+                
+                       
+                                        <div class="row">
+
+                            <div class="input-field col s5">
+                                <select  name ="situation">
+                                   <option value="" ></option>   
+                                   <option value="En couple" name='situation'>En couple</option>
+                                    <option value="Célibataire" name='situation'>Célibataire</option>
+                                    <option value="Marié(e)" name='situation'>Marié(e)</option>
+                                    <option value="Fiancé(e)" name='situation'>Fiancé(e)</option>
+                                        </select>
+                                    <label>Situation amoureuse</label>
+                                </div>      
+                                
+                                <div class="input-field col s5">
+                                    <select name="interesse">
+                                    <option value="" name ="interesse"></option>    
+                                    <option value="Femmes" name="interesse">Femmes</option>
+                                    <option value="Hommes" name="interesse">Hommes</option>
+                            
+                                        </select>
+                                        <label>Intéressé(e) par les</label>
+                                </div>                                                       
+                 </div>          
+
+
+                </div>
+                
+                <div class="input-field col s10">
+                    <input type="text" name="profession" id="profession">
+                        <label for="profession" class="active">Profession</label>                                
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <form class="col s10">
+                          <div class="row">
+                              <div class="input-field col s10">
+                              <i class="material-icons prefix">mode_edit</i>
+                              <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                              <label for="icon_prefix2">Description</label>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                            
+                      <div class="file-field input-field">
+                          <div class="btn">
+                              <span>Photo de profile</span>
+                          <input type="file"  name="photo" id='photo' multiple >
+                        </div>
+                        <div class="file-path-wrapper ">
+                          <input class="file-path validate" type="text"  placeholder="télécharger une photo de profile">
+                        </div>
+
+                        <br>
+                        <br>
+                         <div id="submit_form"  >
+                            <button type="submit" class="btn red" style="margin-left: 200px ; width: 30% " >S'inscrire</button>  
+                        </div>
+                        
+                    </form>
+    </div>
+
+
+
+
+<%include footer %>

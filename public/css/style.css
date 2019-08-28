@@ -1,0 +1,118 @@
+
+
+.page {
+    display: flex ;
+    flex-wrap: wrap; 
+}
+
+
+.header{
+    width: 100% ;   
+    height: 60px;
+    display: flex ; 
+    align-content: center ;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap ; 
+   
+   }
+
+.container{
+    display:flex ; 
+    justify-content: center;
+    align-items: center;
+} 
+
+
+
+
+
+
+
+.div_con {
+
+
+    height: 800px; 
+    width: 100%;
+    display:  flex;
+
+    justify-content:center; 
+    align-items:center ;
+  
+    
+}
+
+
+.div_con .form {
+
+    display: flex; 
+    justify-content: center ; 
+    align-items: center;    
+    flex-direction: column; 
+
+}
+.footer{
+
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    
+
+}
+
+.body {
+    padding-top:50px;
+    width: 60% ;
+    height: 100%;
+    display:flex;
+    flex-wrap: column;    
+    justify-content: center;
+    align-items : center ; 
+    flex-direction: column;
+
+}
+
+
+
+
+.sidebar1 {
+    width: 20%;
+}
+
+
+.notif,.amis{
+    display: flex ; 
+    flex-direction: column ; 
+    flex-wrap: wrap ;
+    justify-content: center; 
+    align-items: center ;
+}
+
+.sidebar2 {
+    width: 20% ;   
+}
+
+
+.post:first-child {
+    border: solid 1px;
+    width:60%;
+}
+
+
+
+.mosaic{
+
+    display: flex ; 
+    width: 95%;
+    height: 600px;
+    flex-flow: row wrap ; 
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden ; 
+    overflow-y: scroll;
+
+}
+
+

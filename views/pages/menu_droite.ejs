@@ -1,0 +1,50 @@
+<div class="sidebar2">
+
+        <ul class="nav">
+
+             <li>
+                 <div class="amis" style=" border: solid 1px solid ; " >
+                        <div class="search-wrapper" style="display: flex ; justify-content: center; align-items: center; flex-direction: row;">
+                          <input id="search" onkeydown="search_freind()" placeholder="Search"><i class="material-icons">search</i>     
+                          <a class="waves-effect waves-light btn modal-trigger gray" href="#modal1" style="background-color:gray;">+</a>                                    
+                                 <div class="search-results"></div>
+                                <%include recherche%>
+                        </div>
+                               
+                        <br>       
+                                         
+             </li>  
+             
+             <li >
+             
+
+                <% if(locals.freinds){%>
+
+              <ul id="liste_amis" class="nav">
+                 <% for(let i=0 ; i != locals.freinds.length ;i++ ) { %>
+                        
+                        <li  onClick="compte('<%=locals.freinds[i].id_profil%>')" >
+                        <div class="row waves-effect waves-light" style=" padding-left: 10px ;display: flex ; justify-content: left; align-items: center; flex-direction: row; background-color: #EEE;">
+                        <img class="circle" style=" width: 40px;height: 40px;" src="images/<%=locals.freinds[i].id_image%>">
+                        <p style="padding-left:20px "> <%=locals.freinds[i].username%> </p> 
+                        </div>
+
+                    </li>
+
+                <%}%>
+                <%}%>
+                              
+                </ul>
+             </li>
+                                        
+        </ul>
+        
+
+                                    
+        
+               
+  
+
+        
+             
+</div>

@@ -1,0 +1,113 @@
+<%include header%>
+
+<%include menu_gauche%>
+
+<div  syle="width:60%" class="body">
+       
+        <form   action='/modif' method="POST"  >
+           <H4> Informations personnelles : </H4>
+           <br>
+           
+               <div class="row">
+                   
+                   <div class="input-field col s5">
+                       <input type="text" name="nom" value="<%=locals.profil.nom%>" id="nom">
+                       <label for="nom" class="active">Nom</label>                                
+                   </div>
+                   
+                   <div class="input-field col s5">
+                       <input type="text" value="<%=locals.profil.prenom%>" name="prenom" id="prenom">
+                       <label for="prenom" class="active">Prenom</label>                                
+                   </div>
+           
+               
+           
+            
+       
+                   <div class="row">
+
+                               <div class="input-field col s3">
+                                   <input type="text" value="<%=locals.profil.age%>" name="age" id="age">
+                                   <label for="age" class="active">Age</label>                                
+                               </div>
+                               
+                              
+                                
+                      
+                        <div class="row">
+
+                           <div class="input-field col s5">
+                               <select  selected="<%=locals.profil.situation%>" name ="situation">
+                                  <option value="" ></option>  
+                                  <%if(locals.profil.situation == "En couple"){%> 
+                                  <option value="En couple" name='situation' selected>En couple</option>
+                                  <%}else{%>
+                                  <option value="En couple" name='situation'>En couple</option>
+                                    <%}%>
+                                    
+                                  <%if(locals.profil.situation == "Célibataire"){%> 
+                                   <option value="Célibataire" name='situation' selected>Célibataire</option>
+                                  <%}else{%>
+                                    <option value="Célibataire" name='situation'>Célibataire</option>
+                                    <%}%>
+
+
+                                   
+                                    <%if(locals.profil.situation == "Marié(e)"){%> 
+                                   
+                                   <option value="Marié(e)" name='situation' selected>Marié(e)</option>
+                                  <%}else{%>
+                                    <option value="Marié(e)" name='situation'>Marié(e)</option>
+                                    <%}%>
+
+                                  <%if(locals.profil.situation == "Fiancé(e)"){%>  
+                                   <option value="Fiancé(e)" name='situation' selected>Fiancé(e)</option>
+                                  <%}else{%>
+                                   <option value="Fiancé(e)" name='situation'>Fiancé(e)</option>
+                                   <%}%>
+                                    
+                                 </select>
+                                   <label>Situation amoureuse</label>
+                               </div>      
+                               
+                                                                                     
+                         </div>          
+
+
+               </div>
+               
+               <div class="input-field col s10">
+                   <input type="text" name="profession" id="profession" value="<%=locals.profil.profession%>">
+                       <label for="profession" class="active">Profession</label>                                
+               </div>
+
+               <br>
+               <br>
+
+               <div class="row">
+                   
+                         <div class="row">
+                             <div class="input-field col s10">
+                             <i class="material-icons prefix">mode_edit</i>
+                             <textarea id="icon_prefix2" class="materialize-textarea" value="<%=locals.profil.description%>"></textarea>
+                             <label for="icon_prefix2">Description</label>
+                           </div>
+                       </div>
+                       
+              </div>
+                           
+                    
+                       <br>
+                       <br>
+                        <div id="submit_form"  >
+                           <button type="submit" class="btn red" style="margin-left: 200px ; width: 30% " >Modifier</button>  
+                       </div>
+                       
+                   </form>
+
+</div>
+
+
+   
+
+   <%include footer%>

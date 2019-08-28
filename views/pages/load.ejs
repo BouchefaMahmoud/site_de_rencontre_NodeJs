@@ -1,0 +1,53 @@
+<% include header %>
+<% include menu_gauche %>
+
+
+
+
+<div class="body">
+
+     <form action="/load" method="POST" enctype="multipart/form-data">
+
+    <div class="mosaic" >
+
+        <%if(locals.images) {%>   
+            
+          <%for(let k=0 ; k != images.length ; k++ ) {%> 
+             <div class="column">
+               <img style="width: 200px; height: 200px;" id="<%=locals.images[k].id_image %>"  src="images/<%=images[k].id_image%>" >
+               <p><%= locals.images[k].date_img %> </p>
+              </div>   
+          <%}%>       
+          
+        <%}%>
+              
+           
+      </div>
+      <div style="width :  80%">
+              
+            <div style="padding-left:40px; " class="file-field input-field">
+                  <div class="btn">
+                    <span>Télécharger</span>
+                    <input type="file" name="image">
+                  </div>
+                  <div class="file-path-wrapper s6">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+
+              
+              <button style="display : flex ;  align-self: right; float:right;" class="btn waves-effect waves-light" type="submit" name="action">Sélectionner
+                  <i class="material-icons right">send</i>
+              </button>
+            </div>
+      </form>
+            
+</div>
+
+
+
+
+<% include menu_droite %>
+
+<% include footer %>
+

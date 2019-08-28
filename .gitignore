@@ -1,0 +1,6 @@
+node_modules/*
+public/semantic/*
+package.json
+package-lock.json
+semantic.json
+public/images/*

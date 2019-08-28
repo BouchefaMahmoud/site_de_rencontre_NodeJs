@@ -1,0 +1,39 @@
+<div class="sidebar1"> 
+
+
+
+    <div class="menn">
+    <ul id="slide-out" class="sidenav">
+      <li><div class="user-view">
+        <div class="background">
+          <img src="/images/fond.jpg">
+          
+                  </div>
+                  <!-- <p>images/<%=locals.image_profile %></p> -->
+                  <a href="/charger_image"><img class="circle" src="<%=locals.image_profil %>"></a>
+                  <a href="/charger_image"><span class="white-text name"><%=locals.profil.nom%> <%=locals.profil.prenom%></span></a>
+                  <a href="#email"><span class="white-text email"><%=locals.profil.username%></span></a>
+
+                 </div></li>
+                 <li><a href="/infos"><i class="material-icons">account_circle</i>Informations personnelle</a></li>
+                 <li><a href="#!"><i class="material-icons">camera_alt</i>Mes Photos</a></li>
+                 <li><a href="#!"><i class="material-icons">contact_mail</i>Ma liste d'amis</a></li>
+                 <li  onClick="compte('<%=locals.profil.id_profil%>')"> 
+                   <div class="row waves-effect waves-light" style="display: flex; background-color: #EEE; justify-content: left; align-items: center; padding-left: 30px">
+                      <i class="material-icons">account_box</i>Mes publications
+                    </li>
+                 
+              </ul>
+              <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </div>
+              
+              
+              
+              <br>
+              <div class="notif" style="background-color: #EEE; border: solid 1px solid">
+                <h5 style="color:blue">Notifications</h5>
+                <div style = "overflow-x: hidden; overflow-y: scroll ;">
+                </div>
+              </div>
+
+</div>
